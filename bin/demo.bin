@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+ 
+/**
+ * Module dependencies.
+ */
+const program = require('commander');
+const app = require('../src/index');
+ 
+program
+  .version('1.0.0', '-v, --version')
+  .option('-i, --init', 'init a project at current directory')
+  .parse(process.argv);
+
+if (program.init) {
+  app.init();
+}

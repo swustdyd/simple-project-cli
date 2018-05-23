@@ -1,0 +1,33 @@
+{
+  "name": "simple-project-cli",
+  "version": "1.0.0",
+  "description": "a simple projetc cli with express, mongoose, react, ant-design, webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swustdyd/simple-project-cli.git"
+  },
+  "keywords": [
+    "express",
+    "mongoose",
+    "react",
+    "ant-design",
+    "webpack"
+  ],
+  "author": "dyd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swustdyd/simple-project-cli/issues"
+  },
+  "homepage": "https://github.com/swustdyd/simple-project-cli#readme",
+  "bin": {
+    "spcli": "./bin/demo.bin"
+  },
+  "dependencies": {
+    "commander": "^2.15.1"
+  }
+}
