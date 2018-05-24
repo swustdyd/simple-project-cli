@@ -13,4 +13,6 @@ program
 
 if (program.init) {
   app.init();
+}else{
+  console.log('input \'spcli -h\' to show the help');
 }
