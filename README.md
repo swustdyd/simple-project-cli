@@ -1,0 +1,39 @@
+# Structure Of Project
+- client
+    - node_modules
+    - src
+       - app.js
+       - app.scss
+       - index.html
+    - .babelrc
+    - package.json
+    - webpack.config.js
+    - webpack.dll.config.js
+- public
+    - dist
+        - dll
+-server
+    - node_modules
+    - src
+        - controllers
+            - demo.js
+        - models
+            - demo.js
+        - schemas
+            - demo.js
+        - services
+            - demo.js
+        - utils
+            - logger.js
+        - app.js
+        - route.js
+    - .babelrc
+    - .eslintignore
+    - .eslintrc.js
+    - package.lock.json
+    - package.json
+- README.md
+
+# Usege
+- run `npm install -g simple-project-cli` to install 
+- run `spcli -i` to build the project
