@@ -81,7 +81,8 @@ const waitInput = async function(showString){
  */
 const init = async function(){
     const currentPath = process.cwd();
-    const defalutName = currentPath.substring(currentPath.lastIndexOf('\\') + 1, currentPath.length);
+    // const defalutName = currentPath.substring(currentPath.lastIndexOf('\\') + 1, currentPath.length);
+    const defalutName = path.basename(currentPath);
 
     const name = await waitInput(`input the project name(${defalutName}): `);
     projetcInfo.name = name || defalutName;
