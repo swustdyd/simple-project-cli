@@ -1,3 +1,13 @@
-html, body{
-  background-color: #aaa;
-}
+#app{
+    margin-left: 50px;
+  }
+  ul{
+    list-style: none;
+  }
+  label{
+    font-weight: bold;
+    display: inline-block;
+    width: 130px;
+    text-align: right;
+    margin-right: 15px;
+  }

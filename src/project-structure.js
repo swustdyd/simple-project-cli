@@ -227,7 +227,7 @@ module.exports = {
             {
                 name: 'README.md',
                 type: 'file',
-                date: {
+                data: {
                     type: 'file',
                     value: path.resolve(config.root, './src/demos/1.0/README.md')
                 }

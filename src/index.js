@@ -32,7 +32,7 @@ const _buildProject = async function(projetcStructure, root){
             if(fs.existsSync(absolutePath)){                
                 continue;
             }
-            let data = '';
+            let data = '';    
             if(item.data){
                 switch(item.data.type){
                     case 'json':
@@ -41,22 +41,25 @@ const _buildProject = async function(projetcStructure, root){
                     case 'string':
                         data = item.data.value;
                         break;
-                    case 'file':
+                    case 'file':   
                         data = await new Promise((resolve, reject) => {
                             const readStream = fs.createReadStream(item.data.value, {encoding: 'utf-8'});
                             let readData = '';
                             readStream.on('data', (chunk) => {
                                 readData += chunk;
                             });
-                            readStream.on('end', () => {
+                            readStream.on('end', () => {     
                                 resolve(readData);
+                            });
+                            readStream.on('error', (err) => {
+                                reject(err);
                             });
                         });
                         break;
                     default:
                         break;
                 }
-            }
+            }    
             fs.appendFileSync(absolutePath, data, item.encoding || 'utf-8');
         }
         if(item.children && item.children.length > 0){
@@ -88,43 +91,21 @@ const init = async function(){
 
     const choose = await waitInput('start to init(y/n)?: ');    
     if(choose === 'y' || choose === ''){
-        console.log('start to install dependencies');
         try {                    
             await _buildProject(projetcStructure.getStructure(projetcInfo.name, projetcInfo.author), currentPath);
+            console.log('start to install dependencies');
+            childProcess.execSync('npm install', {cwd: path.join(currentPath, 'server'), stdio: 'inherit'});
+            childProcess.execSync('npm install', {cwd: path.join(currentPath, 'client'), stdio: 'inherit'});
+            console.log('init success');
         } catch (error) {
             console.log(error);  
         }
-        childProcess.execSync('npm install', {cwd: path.join(currentPath, 'server'), stdio: 'inherit'});
-        childProcess.execSync('npm install', {cwd: path.join(currentPath, 'client'), stdio: 'inherit'});
-        console.log('init success');
     }else{
         console.log('init is stoped');
     }
 
     rl.close();
     process.exit();
-
-    // rl.question(`input the project name(${defalutName}): `, (name) => {
-    //     projetcInfo.name = name || defalutName;
-    //     rl.question(`input the author(someone): `, (author) => {
-    //         projetcInfo.author = author || 'someone';
-    //         rl.question('start to init(y|n): ', async (choose) => {
-    //             if(choose === 'y' || choose === ''){
-    //                 console.log('init project...');
-    //                 try {                    
-    //                     await _buildProject(projetcStructure.getStructure(projetcInfo.name, projetcInfo.author), currentPath);
-    //                 } catch (error) {
-    //                     console.log(error);  
-    //                 }
-    //                 console.log('init success');
-    //             }else{
-    //                 console.log('init is stoped');
-    //             }          
-    //             rl.close();
-    //             process.exit();
-    //         })
-    //     })        
-    // })
 }
 
 module.exports = {
