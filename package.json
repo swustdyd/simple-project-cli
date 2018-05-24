@@ -1,10 +1,9 @@
 {
   "name": "simple-project-cli",
   "version": "1.0.0",
-  "description": "a simple projetc cli with express, mongoose, react, ant-design, webpack",
-  "main": "index.js",
+  "description": "a simple projetc cli with express, mongoose, react, webpack",
+  "main": "src/index.js",
   "scripts": {
-    "start": "babel-node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,7 +14,6 @@
     "express",
     "mongoose",
     "react",
-    "ant-design",
     "webpack"
   ],
   "author": "dyd",

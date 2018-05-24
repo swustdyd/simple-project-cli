@@ -1,7 +1,0 @@
-{
-  "plugins": [
-    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }],
-    ["dynamic-import-webpack"]
-  ],
-  "presets": ["flow", "stage-3", "react", "es2015"]
-}

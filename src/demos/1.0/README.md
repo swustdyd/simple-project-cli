@@ -1,0 +1,42 @@
+# Project dir
+- client
+    - node_modules
+    - src
+       - app.js
+       - app.scss
+       - index.html
+    - .babelrc
+    - package.json
+    - webpack.config.js
+    - webpack.dll.config.js
+- public
+    - dist
+        - dll
+-server
+    - node_modules
+    - src
+        - controllers
+            - demo.js
+        - models
+            - demo.js
+        - schemas
+            - demo.js
+        - services
+            - demo.js
+        - utils
+            - logger.js
+        - app.js
+        - route.js
+    - .babelrc
+    - .eslintignore
+    - .eslintrc.js
+    - package.lock.json
+    - package.json
+- README.md
+
+# Usege
+- into server
+- run `npm run s:dev` to start server
+- into client
+- run `npm run c:dll` to packge the third dependencies into 'public/dist/dll' 
+- run `npm run c:dev` to start client 
