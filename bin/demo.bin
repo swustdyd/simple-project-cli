@@ -7,7 +7,7 @@ const program = require('commander');
 const app = require('../src/index');
  
 program
-  .version('1.0.0', '-v, --version')
+  .version('1.0.2', '-v, --version')
   .option('-i, --init', 'init a project at current directory')
   .parse(process.argv);
 
