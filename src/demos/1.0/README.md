@@ -1,4 +1,6 @@
 # Project dir
+- configs
+    - base.js
 - client
     - node_modules
     - src
@@ -9,6 +11,7 @@
     - package.json
     - webpack.config.js
     - webpack.dll.config.js
+- logs
 - public
     - dist
         - dll
