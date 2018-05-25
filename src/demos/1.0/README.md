@@ -4,9 +4,11 @@
 - client
     - node_modules
     - src
-       - app.js
-       - app.scss
-       - index.html
+        - images
+            - LOGO.png  
+        - app.js
+        - app.scss
+        - index.html
     - .babelrc
     - package.json
     - webpack.config.js
@@ -15,7 +17,7 @@
 - public
     - dist
         - dll
--server
+- server
     - node_modules
     - src
         - controllers
