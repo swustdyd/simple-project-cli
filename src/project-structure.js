@@ -45,6 +45,22 @@ module.exports = {
                         type: 'dir',
                         children: [
                             {
+                                name: 'images',
+                                type: 'dir',
+                                children:[
+                                    {
+                                        name: 'LOGO.png',
+                                        type: 'file',
+                                        encoding: '',
+                                        data: {
+                                            type: 'file',
+                                            value: path.resolve(config.root, './src/demos/1.0/client/LOGO.png'),
+                                            encoding: false
+                                        }
+                                    }
+                                ]
+                            },
+                            {
                                 name: 'app.js',
                                 type: 'file',
                                 data: {
