@@ -43,13 +43,22 @@ const _buildProject = async function(projetcStructure, root){
                         break;
                     case 'file':   
                         data = await new Promise((resolve, reject) => {
-                            const readStream = fs.createReadStream(item.data.value, {encoding: 'utf-8'});
-                            let readData = '';
+                            const readStream = fs.createReadStream(item.data.value);
+                            if(item.data.encoding !== false){
+                                readStream.setEncoding('utf-8');
+                            }
+                            let dataList = [];
                             readStream.on('data', (chunk) => {
-                                readData += chunk;
+                                dataList.push(chunk);
                             });
-                            readStream.on('end', () => {     
-                                resolve(readData);
+                            readStream.on('end', () => {
+                                let resData = '';
+                                if(item.data.encoding !== false){
+                                    resData = dataList.join('');
+                                }else{
+                                    resData = Buffer.concat(dataList);
+                                }   
+                                resolve(resData);
                             });
                             readStream.on('error', (err) => {
                                 reject(err);
@@ -60,7 +69,7 @@ const _buildProject = async function(projetcStructure, root){
                         break;
                 }
             }    
-            fs.appendFileSync(absolutePath, data, item.encoding || 'utf-8');
+            fs.appendFileSync(absolutePath, data);
         }
         if(item.children && item.children.length > 0){
             await _buildProject(item.children, absolutePath);
