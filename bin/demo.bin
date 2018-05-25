@@ -5,9 +5,15 @@
  */
 const program = require('commander');
 const app = require('../src/index');
+const fs = require('fs')
+const path = require('path')
+
+const packageStr = fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8');
+const package = JSON.parse(packageStr);
+
  
 program
-  .version('1.0.2', '-v, --version')
+  .version(package.version, '-v, --version')
   .option('-i, --init', 'init a project at current directory')
   .parse(process.argv);
 
@@ -15,4 +21,5 @@ if (program.init) {
   app.init();
 }else{
   console.log('input \'spcli -h\' to show the help');
+  process.exit();
 }

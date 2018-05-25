@@ -5,13 +5,15 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
+import fs from 'fs'
 import router from './route'
 import logger from './utils/logger'
+import BaseConfig from '../../configs/base'
 
 const isDev = process.env.NODE_ENV !== 'production';
 const app = express();
 
-let serverPort = process.env.PORT || '3001';
+let serverPort = process.env.PORT || BaseConfig.serverPort;
 serverPort = parseInt(serverPort, 10);
 /*** please set up the mongodb connect string  ***/
 // const dbConnectString = ''
@@ -33,14 +35,14 @@ if(isDev){
     app.use(morgan('dev'));
 }else{
     app.use(morgan('combined', {
-        stream: fs.createWriteStream(path.resolve('../logs/access.log'))
+        stream: fs.createWriteStream(path.resolve(BaseConfig.root, './logs/access.log'))
     }));
 }
 
-app.use(express.static(path.resolve('../public')));
+app.use(express.static(path.resolve(BaseConfig.root, './public')));
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Origin',`${BaseConfig.clientHost}:${BaseConfig.clientPort}`);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Credentials', 'true');

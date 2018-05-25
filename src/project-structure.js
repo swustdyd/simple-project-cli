@@ -7,6 +7,20 @@ module.exports = {
     getStructure: function(name, author){
         return [
             {
+                name: 'configs',
+                type: 'dir',
+                children:[
+                    {
+                        name: 'base.js',
+                        type: 'file',
+                        data: {
+                            type: 'file',
+                            value: path.resolve(config.root, './src/demos/1.0/configs/base.js')
+                        }
+                    }
+                ]
+            },
+            {
                 name: 'public',
                 type: 'dir',
                 children:[

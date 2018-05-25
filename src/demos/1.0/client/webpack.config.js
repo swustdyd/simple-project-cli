@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HappyPack = require('happypack');
@@ -7,6 +8,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: 20 });
 const path = require('path');
 const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
+const baseConfig = require('../configs/base');
 const config = {
     entry: {
         index: './src/app'
@@ -20,7 +22,7 @@ const config = {
     devServer: {
         contentBase: '/dist/',
         host: 'localhost',
-        port: 3000,
+        port: baseConfig.clientDevPort,
         publicPath: '/dist/',
         hot: true,
         inline: true
@@ -60,6 +62,13 @@ const config = {
             title: 'Simple Project',
             filename: 'index.html',
             template: './src/index.html'
+        }),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets:[
+                `${baseConfig.serverHost}:${baseConfig.serverPort}/dist/dll/vendor.dll.js`
+            ],
+            publicPath: false,
+            append: false
         }),
         new ExtractTextPlugin({
             filename: 'stylesheet/[name].css',

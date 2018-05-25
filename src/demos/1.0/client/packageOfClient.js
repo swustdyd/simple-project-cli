@@ -26,6 +26,7 @@ let package = {
       "file-loader": "^0.10.1",
       "happypack": "^5.0.0",
       "html-webpack-plugin": "^3.2.0",
+      "html-webpack-include-assets-plugin": "^1.0.4",
       "node-sass": "^4.9.0",
       "postcss-loader": "^2.0.10",
       "resolve-url-loader": "^2.2.0",
