@@ -41,15 +41,17 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                loader: 'happypack/loader?id=scss'
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'happypack/loader?id=scss'
+                })
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'resolve-url-loader'
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'resolve-url-loader']
+                })
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)/,
@@ -61,7 +63,8 @@ const config = {
         new HtmlWebpackPlugin({
             title: 'Simple Project',
             filename: 'index.html',
-            template: './src/index.html'
+            template: './src/index.html',
+            favicon: './src/images/LOGO.png'
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets:[
@@ -92,7 +95,7 @@ const config = {
         new HappyPack({
             id: 'scss',
             threadPool: happyThreadPool,
-            loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+            loaders: ['css-loader', 'resolve-url-loader', 'sass-loader']
         })
     ],
     resolve: {

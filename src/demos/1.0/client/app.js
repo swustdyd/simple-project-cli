@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import baseConfig from '../../configs/base'
 
 import './app.scss'
 
@@ -15,7 +16,7 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        fetch('http://localhost:3001/index')
+        fetch(`${baseConfig.serverHost}:${baseConfig.serverPort}/index`)
             .then((res) => {
                 return res.json()
             }).then((data) => {
@@ -27,12 +28,15 @@ class App extends React.Component{
         const {session} = this.state;
         return(
             <div>
-                <h1>Simple Project</h1>
+                <h1 className="title">
+                    <span className="icon-logo"></span>
+                    <span>Simple Project</span>
+                </h1>
                 <h3>Session.cookie</h3>
                 <ul>
-                    <li>{session.cookie.expires}</li>
-                    <li>{session.cookie.httpOnly + ''}</li>
-                    <li>{session.cookie.originalMaxAge}</li>
+                    <li><label>expires:</label>{session.cookie.expires}</li>
+                    <li><label>httpOnly:</label>{session.cookie.httpOnly + ''}</li>
+                    <li><label>originalMaxAge:</label>{session.cookie.originalMaxAge}</li>
                 </ul>
             </div>
         );
