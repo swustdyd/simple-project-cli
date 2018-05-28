@@ -15,9 +15,10 @@ const app = express();
 
 let serverPort = process.env.PORT || BaseConfig.serverPort;
 serverPort = parseInt(serverPort, 10);
-/*** please set up the mongodb connect string  ***/
-// const dbConnectString = ''
-// mongoose.connect(dbConnectString);
+
+// if(BaseConfig.dbConnectString){
+//     mongoose.connect(BaseConfig.dbConnectString);
+// }
 
 app.use(bodyParser());
 app.use(cookieParser());
@@ -42,7 +43,7 @@ if(isDev){
 app.use(express.static(path.resolve(BaseConfig.root, './public')));
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin',`${BaseConfig.clientHost}:${BaseConfig.clientPort}`);
+    res.header('Access-Control-Allow-Origin', `${BaseConfig.clientHost}:${BaseConfig.clientPort}`);
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Credentials', 'true');

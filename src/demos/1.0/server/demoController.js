@@ -15,6 +15,7 @@ export default class DemoController{
     index(req, res, next){
         try {
             // const data = this._demoService.getDemos();
+            // res.send(data);
             res.send(req.session);
         } catch (error) {
             next(error);
