@@ -54,8 +54,9 @@
 - README.md
 
 # Usege
-- into server
+- into the directory `server`
 - run `npm run s:dev` to start server
-- into client
-- run `npm run c:dll` to packge the third dependencies into 'public/dist/dll' 
-- run `npm run c:dev` to start client 
+- into the directory `client`
+- run `npm run c:dll` to packge the third dependencies into the `public/dist/dll`
+- run `npm run c:dev` to start client
+- then open `http://localhost:3000/dist/index.html` to see the result
