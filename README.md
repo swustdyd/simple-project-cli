@@ -4,11 +4,24 @@
 - client
     - node_modules
     - src
+        - components
+            - asyncComponent.js
+            - menu.js
         - images
             - LOGO.png  
+        - layout
+            - footer.js
+            - hmfLayout.js
+            - lrLayout.js
+            - nav.js
+        - pages
+            - about.js
+            - index.js
+            - layoutDemo.js
         - app.js
         - app.scss
         - index.html
+        - util.js
     - .babelrc
     - package.json
     - webpack.config.js
