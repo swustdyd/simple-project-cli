@@ -2,7 +2,7 @@ const path =  require('path');
 const readline = require('readline');
 const fs = require('fs');
 const childProcess = require('child_process')
-const projetcStructure = require('./project-structure')
+const projetcStructure = require('./project-structure-1.0.5')
 
 const rl = readline.createInterface({
   input: process.stdin,

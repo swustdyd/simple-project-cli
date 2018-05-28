@@ -18,6 +18,7 @@ let package = {
       "babel-loader": "^7.1.3",
       "babel-preset-es2015": "^6.24.1",
       "babel-preset-react": "^6.24.1",
+      "babel-plugin-dynamic-import-webpack": "^1.0.2",
       "clean-webpack-plugin": "^0.1.17",
       "cross-env": "^3.2.4",
       "css-loader": "^0.26.4",
