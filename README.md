@@ -1,3 +1,4 @@
+![Alt text](https://github.com/swustdyd/simple-project-cli/raw/master/src/demos/1.0/client/LOGO.png) 
 # Structure Of Project
 - configs
     - base.js
